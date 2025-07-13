@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Web3Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        .form-container {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #ff69b4;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: white;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #ff69b4, #8a2be2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .success {
+            background: #2d5a2d;
+            border: 1px solid #4caf50;
+        }
+        
+        .error {
+            background: #5a2d2d;
+            border: 1px solid #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Teste do Sistema de Email Web3Forms</h1>
+        <p>Este é um teste simples para verificar se o Web3Forms está funcionando corretamente.</p>
+        
+        <form id="contactForm">
+            <input type="hidden" name="access_key" value="0a8dc5a6-5a67-4c44-a7e1-85b420f5c5f5">
+            
+            <input type="text" name="name" placeholder="Seu Nome" required>
+            <input type="email" name="email" placeholder="Seu Email" required>
+            <input type="text" name="subject" placeholder="Assunto" required>
+            <textarea name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
+            
+            <button type="submit">Enviar Teste</button>
+        </form>
+        
+        <div id="status"></div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const statusDiv = document.getElementById('status');
+            const formData = new FormData(this);
+            
+            // Mostrar loading
+            statusDiv.innerHTML = '<div class="status">🔄 Enviando...</div>';
+            
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    statusDiv.innerHTML = '<div class="status success">✅ Email enviado com sucesso!</div>';
+                    this.reset();
+                } else {
+                    throw new Error(result.message || 'Erro desconhecido');
+                }
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                statusDiv.innerHTML = `<div class="status error">❌ Erro: ${error.message}</div>`;
+            }
+        });
+    </script>
+</body>
+</html>
