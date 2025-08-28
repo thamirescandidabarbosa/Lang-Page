@@ -3,35 +3,38 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import './Portfolio.css';
+import MobileFirst from '../assets/images//MobileFirst.png';
+import SpeekFlow from '../assets/images//SpeekFlow.png';
+import Launch from '../assets/images/Launch.png';
 
 const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A modern e-commerce platform built with React and Node.js, featuring real-time inventory management.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      liveLink: '#',
-      githubLink: '#'
+      title: 'UX/UI Landing Page Varejo',
+      description: 'Mobile-first, responsive landing page for sneaker e-commerce, created in Figma with a focus on conversion, user experience, and a modern look.',
+      image: MobileFirst,
+      technologies: ['Figma', 'Photoshop', 'Canvas'],
+      liveLink: 'https://www.behance.net/gallery/231654773/UXUI-LANDING-PAGE-VEREJO',
+      githubLink: 'https://www.behance.net/gallery/231654773/UXUI-LANDING-PAGE-VEREJO'
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates and team collaboration features.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-      technologies: ['Vue.js', 'Firebase', 'Vuex', 'Tailwind CSS'],
-      liveLink: '#',
-      githubLink: '#'
+      title: 'SpeekFlow',
+      description: 'SpecFlow, a Functional Specifications (FS) management system for collaborative software development.',
+      image: SpeekFlow,
+      technologies: ['React', 'NestJS', 'Firebase', 'PostgreSQL', 'TypeScript', 'JWT'],
+      liveLink: 'https://github.com/thamirescandidabarbosa/SpecFlow.git',
+      githubLink: 'https://github.com/thamirescandidabarbosa/SpecFlow.git'
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'A beautiful weather dashboard with detailed forecasts, maps, and customizable alerts.',
-      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop',
-      technologies: ['JavaScript', 'API Integration', 'Chart.js', 'CSS Grid'],
-      liveLink: '#',
-      githubLink: '#'
+      title: 'Launchly Startup Boost',
+      description: 'A professional, modern landing page template built with React 18, TypeScript, and Tailwind CSS. Perfect for startups, SaaS companies, and tech businesses.',
+      image: Launch,
+      technologies: ['React 18', 'TypeScript', 'Vite', 'Tailwind CSS', 'shadcn/ui'],
+      liveLink: 'https://thamires-launchly-template.surge.sh/',
+      githubLink: 'https://thamires-launchly-template.surge.sh/'
     },
     {
       id: 4,
